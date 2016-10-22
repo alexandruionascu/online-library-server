@@ -34,6 +34,21 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
+  },
+  '/book/get/:id': {
+    controller: 'BookController',
+    action: 'getBook',
+    skipAssets: true
+  },
+  '/user/get/:id': {
+    controller: 'UserController',
+    action: 'getUser',
+    skipAssets: true
+  },
+  '/borrow/get/:id/': {
+    controller: 'BorrowController',
+    action: 'get',
+    skipAssets: true
   }
 
   /***************************************************************************
