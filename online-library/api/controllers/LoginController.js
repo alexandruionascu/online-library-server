@@ -6,6 +6,13 @@
  */
 
 module.exports = {
-	
-};
+	get: function(req, res) {
 
+		User.count({name:'Flynn'}).exec(function(error, found) {
+			if(err)
+				console.log(err);
+	  	res.send(found);
+
+		});
+	}
+};

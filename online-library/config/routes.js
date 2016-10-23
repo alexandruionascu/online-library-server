@@ -55,6 +55,11 @@ module.exports.routes = {
     action: 'get',
     skipAssets: true
   },
+  '/recommendation/getuser/:id': {
+    controller: 'RecommendationController',
+    action: 'getUser',
+    skipAssets: true
+  },
   '/borrow/return/:id/': {
     controller: 'BorrowController',
     action: 'return',
@@ -64,7 +69,8 @@ module.exports.routes = {
     controller: 'BorrowController',
     action: 'giveBack',
     skipAssets: true
-  }
+  },
+
 
   /***************************************************************************
   *                                                                          *

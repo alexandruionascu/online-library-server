@@ -30,6 +30,9 @@ module.exports = {
     },
     category: {
       type: 'string'
+    },
+    rating: {
+      type: 'integer'
     }
   }
 };

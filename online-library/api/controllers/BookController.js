@@ -6,6 +6,8 @@
  */
 
 var Guid = require('guid');
+var books = require('google-books-catalogue-search');
+var randomWords = require('random-words');
 
 module.exports = {
 	get: function(req, res) {
@@ -14,6 +16,46 @@ module.exports = {
 				console.log(error);
 			res.send(models);
 		});
+	},
+
+	googleBooks: function(req, res) {
+		for(var i = 0; i < 100; i++) {
+			var query = randomWords();
+			books.search(query, function(error, results) {
+		    if (!error ) {
+		        if(results != null) {
+							console.log(results);
+							for(var j = 0; j < results.length; j++) {
+									Guid.create();
+									if(results[j].authors !== undefined && results[j].categories !== undefined ) {
+										var data = {
+											id: Guid.raw(),
+											title: results[j].title,
+											author: results[j].authors[0],
+											category: results[j].categories[0],
+											description: results[j].description,
+											rating: results[j].averageRating,
+											coverPicture: results[j].imageLinks.smallThumbnail
+										};
+										Book.create(data).exec(function(err, model) {
+											//	console.log(model);
+										});
+									}
+
+
+						}
+
+
+
+						}
+
+
+		    } else {
+		        console.log(error);
+		    }
+			});
+		}
+
 	},
 
 	getBook: function(req, res) {
