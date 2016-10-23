@@ -49,6 +49,21 @@ module.exports.routes = {
     controller: 'BorrowController',
     action: 'get',
     skipAssets: true
+  },
+  '/recommendation/get/:id': {
+    controller: 'RecommendationController',
+    action: 'get',
+    skipAssets: true
+  },
+  '/borrow/return/:id/': {
+    controller: 'BorrowController',
+    action: 'return',
+    skipAssets: true
+  },
+  '/borrow/giveback/:userId/:bookId': {
+    controller: 'BorrowController',
+    action: 'giveBack',
+    skipAssets: true
   }
 
   /***************************************************************************

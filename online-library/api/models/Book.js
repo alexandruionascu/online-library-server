@@ -28,7 +28,7 @@ module.exports = {
     coverPicture: {
       type: 'string'
     },
-    categories: {
+    category: {
       type: 'string'
     }
   }

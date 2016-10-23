@@ -12,7 +12,6 @@ var bigInt = require('big-int');
 module.exports = {
 	get: function(req, res) {
 		var id = req.param('id');
-		console.log(id);
 		Borrow.find().where({userId: id}).exec(function(error, models) {
 			if(error)
 				console.log(error);
@@ -25,6 +24,28 @@ module.exports = {
 			if(error)
 				console.log(error);
 			res.send(models);
+		});
+	},
+
+	return: function(req, res) {
+		var borrowId = req.param('id');
+		Borrow.update({id: borrowId}, {end: timestamp().toString()}).exec(function (err, updated) {
+		  if (err) {
+		    return res.negotiate(err);
+		  }
+		  return res.send(updated);
+		});
+	},
+
+	giveBack: function(req, res) {
+		var uId = req.param('userId');
+		var bId = req.param('bookId');
+		
+		Borrow.update({userId: uId, bookId: bId}, {end: timestamp().toString()}).exec(function(err, updated) {
+			if (err) {
+		    return res.negotiate(err);
+		  }
+		  return res.send(updated);
 		});
 	},
 

@@ -11,7 +11,8 @@ module.exports = {
   attributes: {
     id: {
       type: 'string',
-      unique: true
+      unique: true,
+      primaryKey: true
     },
     userId: {
       type: 'string'
